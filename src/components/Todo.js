@@ -1,6 +1,6 @@
 import React from "react";
 
-const Todo = ({ item, result, setResult }) => {
+const Todo = ({ item, result, setResult, edit1 }) => {
   const deleteTodo = (id) => {
     const deleteOne = result.filter((item) => item.id !== id);
     setResult(deleteOne);
@@ -28,7 +28,7 @@ const Todo = ({ item, result, setResult }) => {
       <button onClick={() => deleteTodo(item.id)} className="trash-btn">
         <i className="fas fa-trash"></i>
       </button>
-      <button className="edit-btn">
+      <button onClick={() => edit1(item)} className="edit-btn">
         <i className="fas fa-edit"></i>
       </button>
     </div>
