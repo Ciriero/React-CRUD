@@ -26,6 +26,24 @@ const Form = () => {
     setTerm("");
   };
 
+  useEffect(() => {
+    filterHandler();
+  }, [result, status]);
+
+  const filterHandler = () => {
+    switch (status) {
+      case "completed":
+        setFilterd(result.filter((todo) => todo.completed === true));
+        break;
+      case "uncompleted":
+        setFilterd(result.filter((todo) => todo.completed === false));
+        break;
+      default:
+        setFilterd(result);
+        break;
+    }
+  };
+
   return (
     <>
       <form onSubmit={addTodo}>
@@ -47,7 +65,7 @@ const Form = () => {
         </div>
       </form>
       <>
-        <TodoList result={result} setResult={setResult} />
+        <TodoList result={result} setResult={setResult} filterd={filterd} />
       </>
     </>
   );
