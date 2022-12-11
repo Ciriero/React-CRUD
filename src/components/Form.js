@@ -12,6 +12,8 @@ const Form = () => {
   const [filterd, setFilterd] = useState([]);
   const [update, setUpdate] = useState(false);
   const [id, setId] = useState("");
+  const [modalStatus, setModalStatus] = useState(false);
+  const [contentModal, setContentModal] = useState("");
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -28,6 +30,8 @@ const Form = () => {
       },
     ]);
     setTerm("");
+    setModalStatus(true);
+    setContentModal("Todo Added");
   };
 
   useEffect(() => {
@@ -71,6 +75,8 @@ const Form = () => {
     setTerm("");
     setId("");
     setUpdate(!update);
+    setModalStatus(true);
+    setContentModal("Todo Update");
   };
 
   useEffect(() => {
@@ -79,6 +85,9 @@ const Form = () => {
 
   return (
     <>
+      {modalStatus && (
+        <Modal closeModal={closeModal} contentModal={contentModal} />
+      )}
       <form onSubmit={update ? edit2 : addTodo}>
         <input
           type="text"
@@ -107,6 +116,9 @@ const Form = () => {
           setResult={setResult}
           filterd={filterd}
           edit1={edit1}
+          setModalStatus={setModalStatus}
+          setContentModal={setContentModal}
+          modalStatus={modalStatus}
         />
       </>
     </>
