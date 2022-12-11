@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import TodoList from "./TodoList";
 
@@ -26,6 +26,24 @@ const Form = () => {
     setTerm("");
   };
 
+  useEffect(() => {
+    filterHandler();
+  }, [result, status]);
+
+  const filterHandler = () => {
+    switch (status) {
+      case "completed":
+        setFilterd(result.filter((todo) => todo.completed === true));
+        break;
+      case "uncompleted":
+        setFilterd(result.filter((todo) => todo.completed === false));
+        break;
+      default:
+        setFilterd(result);
+        break;
+    }
+  };
+
   return (
     <>
       <form onSubmit={addTodo}>
@@ -39,7 +57,11 @@ const Form = () => {
           <i className="fas fa-plus-square"></i>
         </button>
         <div className="select">
-          <select name="todos" className="filter-todo">
+          <select
+            onChange={(e) => setStatus(e.target.value)}
+            name="todos"
+            className="filter-todo"
+          >
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>
@@ -47,7 +69,7 @@ const Form = () => {
         </div>
       </form>
       <>
-        <TodoList result={result} setResult={setResult} />
+        <TodoList result={result} setResult={setResult} filterd={filterd} />
       </>
     </>
   );
