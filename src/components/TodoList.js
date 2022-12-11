@@ -1,7 +1,15 @@
 import React from "react";
 import Todo from "./Todo";
 
-const TodoList = ({ result, setResult, filterd, edit1 }) => {
+const TodoList = ({
+  result,
+  setResult,
+  filterd,
+  edit1,
+  setModalStatus,
+  setContentModal,
+  modalStatus,
+}) => {
   return (
     <div className="todo-container">
       <ul className="todo-list">
@@ -12,6 +20,9 @@ const TodoList = ({ result, setResult, filterd, edit1 }) => {
             result={result}
             setResult={setResult}
             edit1={edit1}
+            setModalStatus={setModalStatus}
+            setContentModal={setContentModal}
+            modalStatus={modalStatus}
           />
         ))}
       </ul>
