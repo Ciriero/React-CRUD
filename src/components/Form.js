@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import Modal from "./Modal";
 import TodoList from "./TodoList";
 
 const Form = () => {
@@ -77,6 +78,11 @@ const Form = () => {
     setUpdate(!update);
     setModalStatus(true);
     setContentModal("Todo Update");
+  };
+
+  const closeModal = () => {
+    setModalStatus(false);
+    setContentModal("");
   };
 
   useEffect(() => {
