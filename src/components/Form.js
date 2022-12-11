@@ -5,7 +5,9 @@ import TodoList from "./TodoList";
 
 const Form = () => {
   const [term, setTerm] = useState("");
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState(
+    JSON.parse(localStorage.getItem("proyectcrud1")) || []
+  );
   const [status, setStatus] = useState("all");
   const [filterd, setFilterd] = useState([]);
   const [update, setUpdate] = useState(false);
@@ -70,6 +72,10 @@ const Form = () => {
     setId("");
     setUpdate(!update);
   };
+
+  useEffect(() => {
+    localStorage.setItem("proyectcrud1", JSON.stringify(result));
+  }, [result]);
 
   return (
     <>
