@@ -137,7 +137,7 @@ Global Styles
   font-size: 1rem;
 }
 .complete-btn {
-  background: rgb(11, 212, 162) M;
+  background: rgb(11, 212, 162);
 }
 .edit-btn {
   background: var(--clt-bt-edit);
@@ -179,7 +179,6 @@ select {
   background-image: none;
 }
 
-/* Custom Select */
 .select {
   margin: 1rem;
   position: relative;
