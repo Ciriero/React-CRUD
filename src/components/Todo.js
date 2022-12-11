@@ -1,6 +1,10 @@
 import React from "react";
 
 const Todo = ({ item }) => {
+  const deleteTodo = (id) => {
+    const deleteOne = result.filter((item) => item.id !== id);
+    setResult(deleteOne);
+  };
   return (
     <div className="todo">
       <li className="todo-item">{item.term}</li>
