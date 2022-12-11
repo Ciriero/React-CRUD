@@ -5,10 +5,24 @@ const Todo = ({ item, result, setResult }) => {
     const deleteOne = result.filter((item) => item.id !== id);
     setResult(deleteOne);
   };
+  const completeTodo = (id) => {
+    const completeOne = result.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          completed: !item.completed,
+        };
+      }
+      return item;
+    });
+    setResult(completeOne);
+  };
   return (
     <div className="todo">
-      <li className="todo-item">{item.term}</li>
-      <button className="complete-btn">
+      <li className={`todo-item ${item.completed ? "completed" : ""}`}>
+        {item.term}
+      </li>
+      <button onClick={() => completeTodo(item.id)} className="complete-btn">
         <i className="fas fa-check"></i>
       </button>
       <button onClick={() => deleteTodo(item.id)} className="trash-btn">
