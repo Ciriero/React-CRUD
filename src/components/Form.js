@@ -8,6 +8,8 @@ const Form = () => {
   const [result, setResult] = useState([]);
   const [status, setStatus] = useState("all");
   const [filterd, setFilterd] = useState([]);
+  const [update, setUpdate] = useState(false);
+  const [id, setId] = useState("");
 
   const addTodo = (e) => {
     e.preventDefault();
@@ -44,9 +46,34 @@ const Form = () => {
     }
   };
 
+  const edit1 = (item) => {
+    setUpdate(!update);
+    if (update) {
+      setTerm("");
+      return;
+    }
+    setTerm(item.term);
+    setId(item.id);
+  };
+
+  const edit2 = (e) => {
+    e.preventDefault();
+    if (!term.trim()) {
+      Swal.fire("Write something, please");
+      return;
+    }
+    const editTerm = result.map((item) =>
+      item.id === id ? { id, term, completed: false } : item
+    );
+    setResult(editTerm);
+    setTerm("");
+    setId("");
+    setUpdate(!update);
+  };
+
   return (
     <>
-      <form onSubmit={addTodo}>
+      <form onSubmit={update ? edit2 : addTodo}>
         <input
           type="text"
           className="todo-input"
@@ -69,7 +96,12 @@ const Form = () => {
         </div>
       </form>
       <>
-        <TodoList result={result} setResult={setResult} filterd={filterd} />
+        <TodoList
+          result={result}
+          setResult={setResult}
+          filterd={filterd}
+          edit1={edit1}
+        />
       </>
     </>
   );
