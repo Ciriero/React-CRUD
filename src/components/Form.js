@@ -6,6 +6,8 @@ import TodoList from "./TodoList";
 const Form = () => {
   const [term, setTerm] = useState("");
   const [result, setResult] = useState([]);
+  const [status, setStatus] = useState("all");
+  const [filterd, setFilterd] = useState([]);
 
   const addTodo = (e) => {
     e.preventDefault();
