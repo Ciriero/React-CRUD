@@ -3,15 +3,16 @@
 Variables
 ===============
 */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap');
 
 :root {
-  --clr-primary-1: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+  --clr-primary-1: #232946;
   --clr-white: #fff;
   --clr-white-2: #f7fffe;
   --clr-white-2: #f1f6f5;
   --clr-black: #000000;
-  --clr-bt-primmary: #ff6f47;
-  --clt-bt-edit: #00f5ff;
+  --clr-bt-primmary: #FFC93C;
+  --clt-bt-edit: #F55353;
   --clr-modal-primary: #82c3ec;
   --spacing: 0.2rem;
   --transition: all 0.8s linear;
@@ -34,9 +35,9 @@ Global Styles
 }
 
 body {
-  background-image: var(--clr-primary-1);
+  background-color: var(--clr-primary-1);
   color: var(--clr-white);
-  font-family: "Poppins", sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
   min-height: var(--min-height);
 }
 
